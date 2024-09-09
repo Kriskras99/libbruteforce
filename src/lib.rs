@@ -151,7 +151,7 @@ pub fn crack<T: CrackTarget>(param: CrackParameter<T>) -> CrackResult {
 
 /// Starts a multi-threaded brute force attack on a given target string that keeps search after a match.
 ///
-/// This variant of [`crack`] is useful for weak hash functions, where you need the original value
+/// This variant of [`crack()`] is useful for weak hash functions, where you need the original value
 /// but there are many matches for a hash.
 ///
 /// It supports any alphabet you would like to use. You must provide a hashing function.
@@ -205,7 +205,7 @@ impl<T: CrackTarget> Iterator for CrackResults<T> {
     /// This call is blocking.
     ///
     /// For the non-blocking variant, use
-    /// [`try_next`]
+    /// [`CrackResults::next_timeout()`]
     fn next(&mut self) -> Option<Self::Item> {
         match self.receiver.recv() {
             Ok(solution) => {
